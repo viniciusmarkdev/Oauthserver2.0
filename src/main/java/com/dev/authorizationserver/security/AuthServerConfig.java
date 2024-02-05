@@ -15,6 +15,20 @@ import org.springframework.security.oauth2.provider.client.InMemoryClientDetails
 
 @Configuration
 @EnableAuthorizationServer
+
+/*
+ * 
+ * Podemos solicitar um token no endpoint /oauth/token. O Spring Security
+ * configura automaticamente esse endpoint para nós. Utilizamos as credenciais
+ * do cliente com HTTP Basic para acessar o endpoint e enviar as informações
+ * necessárias.
+ * 
+ * Para testar abrimos  o prompt : colocamos o comando  abaixo:
+ * 
+ * curl -v -XPOST -u client:secret
+ * http://localhost:8080/oauth/token?grant_type=password&username=marcos&password=
+ * 12345&scope=read
+ */
 public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
 	/**
@@ -23,6 +37,35 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 	 * ClientDetailsService
 	 * 
 	 */
+
+	/*
+	 * 
+	 * 
+	 * Se estivermos escrevendo uma implementação na qual armazena detalhes do
+	 * cliente em um banco de dados, o que é geralmente o caso em cenários do mundo
+	 * real, então é melhor usar a configuração abaixo
+	 * 
+	 * 
+	 * 
+	 */
+
+	/*
+	 * 
+	 * Using the password grant type In this section, we use the authorization
+	 * server with the OAuth 2 password grant. Well, we mainly test if it’s working,
+	 * because with the implementation we did in sections 13.2 and 13.3, we already
+	 * have a working authorization server that uses the password grant type. I told
+	 * you it’s easy! Figure 13.5 reminds you of the password grant type and the
+	 * place of the authorization server within this flow. Now, let’s start the
+	 * application and test it. We can request a token at the /oauth/ token
+	 * endpoint. Spring Security automatically configures this endpoint for us. We
+	 * use the client credentials with HTTP Basic to access the endpoint and send
+	 * the needed
+	 * 
+	 * 
+	 * 
+	 */
+
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
@@ -59,18 +102,28 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
 	}
 
-	
 	/*
 	 * 
-	 * Forma mais enxuta de configurar 
+	 * Forma mais enxuta de configurar
 	 * 
-	 * @Override
-	   public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("client").secret("secret").authorizedGrantTypes("password").scopes("read");
-	    }
+	 * @Override public void configure(ClientDetailsServiceConfigurer clients)
+	 * throws Exception {
+	 * clients.inMemory().withClient("client").secret("secret").authorizedGrantTypes
+	 * ("password").scopes("read"); }
 	 * 
 	 */
-	
+
+	/*
+	 * 
+	 * Estamos utilizando o tipo de concessão de senha (password grant) no servidor
+	 * de autorização com OAuth 2. Estamos testando se está funcionando, porque com
+	 * a implementação que fizemos com github e facebook já temos um servidor de
+	 * autorização funcional que utiliza o tipo de concessão de senha.
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 
 	/*
 	 * 
