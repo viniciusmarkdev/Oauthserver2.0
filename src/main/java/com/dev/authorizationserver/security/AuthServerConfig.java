@@ -23,11 +23,31 @@ import org.springframework.security.oauth2.provider.client.InMemoryClientDetails
  * do cliente com HTTP Basic para acessar o endpoint e enviar as informações
  * necessárias.
  * 
- * Para testar abrimos  o prompt : colocamos o comando  abaixo:
+ * Para testar abrimos o prompt : colocamos o comando abaixo:
  * 
- * curl -v -XPOST -u client:secret
- * http://localhost:8080/oauth/token?grant_type=password&username=marcos&password=
- * 12345&scope=read
+ * curl -v -X POST -u client:secret
+ * "http://localhost:8080/oauth/token?grant_type=password&username=marcos&password=12345&scope=read"
+ * 
+ * 
+ * curl: É uma ferramenta de linha de comando utilizada para fazer requisições
+ * HTTP.
+ * 
+ * -v: Ativa o modo verbose (detalhado), exibindo informações completas sobre a
+ * solicitação e resposta.
+ * 
+ * -XPOST: Especifica que a solicitação será do tipo POST, indicando a intenção
+ * de enviar dados para o servidor.
+ * 
+ * -u client:secret: Envia as credenciais do cliente no formato "client:secret"
+ * usando a autenticação HTTP Basic. Isso é comum em solicitações OAuth 2 para
+ * autenticar o cliente.
+ * 
+ * Aqui a resposta 
+ * 
+ * {"access_token":"aac0024e-1311-4bed-80ff-771169e66990","token_type":"bearer","expires_in":43199,"scope":"read"}*
+ * 
+ * Com a configuração padrão no Spring Security, um token é um simples UUID
+ * 
  */
 public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
