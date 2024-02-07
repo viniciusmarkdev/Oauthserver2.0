@@ -42,9 +42,10 @@ import org.springframework.security.oauth2.provider.client.InMemoryClientDetails
  * usando a autenticação HTTP Basic. Isso é comum em solicitações OAuth 2 para
  * autenticar o cliente.
  * 
- * Aqui a resposta 
+ * Aqui a resposta
  * 
- * {"access_token":"aac0024e-1311-4bed-80ff-771169e66990","token_type":"bearer","expires_in":43199,"scope":"read"}*
+ * {"access_token":"aac0024e-1311-4bed-80ff-771169e66990","token_type":"bearer",
+ * "expires_in":43199,"scope":"read"}*
  * 
  * Com a configuração padrão no Spring Security, um token é um simples UUID
  * 
@@ -58,29 +59,17 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 	 * 
 	 */
 
-	/*
-	 * 
-	 * 
-	 * Se estivermos escrevendo uma implementação na qual armazena detalhes do
-	 * cliente em um banco de dados, o que é geralmente o caso em cenários do mundo
-	 * real, então é melhor usar a configuração abaixo
-	 * 
-	 * 
-	 * 
-	 */
+	
 
 	/*
 	 * 
-	 * Using the password grant type In this section, we use the authorization
-	 * server with the OAuth 2 password grant. Well, we mainly test if it’s working,
-	 * because with the implementation we did in sections 13.2 and 13.3, we already
-	 * have a working authorization server that uses the password grant type. I told
-	 * you it’s easy! Figure 13.5 reminds you of the password grant type and the
-	 * place of the authorization server within this flow. Now, let’s start the
-	 * application and test it. We can request a token at the /oauth/ token
-	 * endpoint. Spring Security automatically configures this endpoint for us. We
-	 * use the client credentials with HTTP Basic to access the endpoint and send
-	 * the needed
+	 *
+	 *
+	 * Usando o tipo de concessão de senha. usamos o servidor de
+	 * autorização com o OAuth 2 tipo de concessão de senha
+	 * Podemos solicitar um token no endpoint /oauth/token. O Spring Security
+	 * configura automaticamente este endpoint para nós. Usamos as credenciais do
+	 * cliente com HTTP Basic para acessar o endpoint e enviar o necessário.
 	 * 
 	 * 
 	 * 
